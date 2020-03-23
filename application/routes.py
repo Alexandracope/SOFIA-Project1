@@ -1,6 +1,6 @@
 from flask import render_template, redirect, url_for, request 
 from application import app, db, bcrypt
-from application.models import Posts, Users
+from application.models import Collections, Drmartens, Itemslist, Users
 from application.forms import PostForm, RegistrationForm, LoginForm, UpdateAccountForm
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -28,11 +28,12 @@ def register():
         return redirect(url_for('collection'))
     return render_template('register.html', title='Register', form=form)
 
+
 @app.route('/')
 @app.route('/home')
 def home():
-    postData = Posts.query.all()
-    return render_template('home.html', title='Home')
+    ShoeData = Drmartens.query.all()
+    return render_template('home.html', title='Home', Docs=ShoeData)
 
 @app.route('/')
 @app.route('/about')

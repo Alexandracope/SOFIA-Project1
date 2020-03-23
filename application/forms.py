@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
-from application.models import Users
+from application.models import Collections, Drmartens, Itemslist, Users
 from flask_login import current_user
 
 class RegistrationForm(FlaskForm):
@@ -89,3 +89,31 @@ class UpdateAccountForm(FlaskForm):
             user = Users.query.filter_by(email=email.data).first()
             if user:
                 raise ValidationError('Email already in use')
+
+class CollectionForm(FlaskForm):
+ 
+    title = StringField('Title',
+        validators = [
+            DataRequired(),
+            Length(min=2, max=100)
+        ]
+    )
+    content = StringField('Choose Docs',
+        validators = [
+            DataRequired(),
+            Length(min=2, max=100)
+        ]
+    )
+    content = StringField('Choose Docs',
+        validators = [
+            DataRequired(),
+            Length(min=2, max=100)
+        ]
+    )
+    content = StringField('Choose Docs',
+        validators = [
+            DataRequired(),
+            Length(min=2, max=100)
+        ]
+    )
+    submit = SubmitField('Post!')

@@ -2,39 +2,39 @@ from application import db, login_manager
 from flask_login import UserMixin
 
 
-class collections(db.Model):
+class Collections(db.Model):
     id=db.Column(db.Integer,primary_key=True)
     name = db.Column(db.String(30), nullable=False)
     itemslist_id = db.Column(db.Integer, db.ForeignKey('itemslist.id'), nullable=False)
     drmartens_id= db.Column(db.Integer, db.ForeignKey('drmartens.id'), nullable=False)
 
-def __repr__(self):
-    return ''.join([
-        'DocID: ', drmartens.drmartens_id, '\r\n',
-        'ItemID: ', itemslist.itemslist_id, '\r\n'
-    ])
+    def __repr__(self):
+        return ''.join([
+            'DocID: ', drmartens.drmartens_id, '\r\n',
+            'ItemID: ', itemslist.itemslist_id, '\r\n'
+        ])
 
-class drmartens(db.Model):
+class Drmartens(db.Model):
     id=db.Column(db.Integer,primary_key=True)
     name = db.Column(db.String(30), nullable=False)
     style_code = db.Column(db.Integer, nullable=False, unique=True)
     collection_id = db.Column(db.Integer, db.ForeignKey('collections.id'), nullable=False)
     itemslist_id = db.Column(db.Integer, db.ForeignKey('itemslist.id'), nullable=False)
     
-def __repr__(self):
-    return ''.join([
-     'ItemID: ', itemslist.itemslist_id, '\r\n'   
-    ])
+    def __repr__(self):
+        return ''.join([
+        'ItemID: ', itemslist.itemslist_id, '\r\n'   
+        ])
 
-class itemslist(db.Model):
+class Itemslist(db.Model):
     id=db.Column(db.Integer,primary_key=True)
     collection_id = db.Column(db.Integer, db.ForeignKey('collections.id'), nullable=False)
     drmartens_id = db.Column(db.Integer, db.ForeignKey('drmartens.id'), nullable=False)
     
-def __repr__(self):
-    return ''.join([
-     'ItemID: ', drmartens.drmartens_id, '\r\n'   
-    ])
+    def __repr__(self):
+        return ''.join([
+        'ItemID: ', drmartens.drmartens_id, '\r\n'   
+        ])
 
 class Users(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
