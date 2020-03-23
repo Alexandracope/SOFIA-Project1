@@ -6,7 +6,7 @@ class Collections(db.Model):
     id=db.Column(db.Integer,primary_key=True)
     name = db.Column(db.String(30), nullable=False)
     itemslist_id = db.Column(db.Integer, db.ForeignKey('itemslist.id'), nullable=False)
-    drmartens_id= db.Column(db.Integer, db.ForeignKey('drmartens.id'), nullable=False)
+    user_id= db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     def __repr__(self):
         return ''.join([
@@ -18,7 +18,6 @@ class Drmartens(db.Model):
     id=db.Column(db.Integer,primary_key=True)
     name = db.Column(db.String(30), nullable=False)
     style_code = db.Column(db.Integer, nullable=False, unique=True)
-    collection_id = db.Column(db.Integer, db.ForeignKey('collections.id'), nullable=False)
     itemslist_id = db.Column(db.Integer, db.ForeignKey('itemslist.id'), nullable=False)
     
     def __repr__(self):
@@ -42,7 +41,7 @@ class Users(db.Model, UserMixin):
     last_name = db.Column(db.String(30), nullable=False)
     email = db.Column(db.String(150), nullable=False, unique=True)
     password = db.Column(db.String(500), nullable=False)
-    posts = db.relationship('Posts', backref='author', lazy=True)
+    Shoes= db.relationship('Collections', backref='user', lazy=True)
 
     def __repr__(self):
         return ''.join([
