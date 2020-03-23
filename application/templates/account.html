@@ -1,9 +1,33 @@
-{% extends 'layout.html' %}
+{% extends "layout.html" %}
 {% block body_content %}
-    <h1>{{ current_user.first_name }}'s Account</h1>
+<h1>{{ current_user.first_name }} {{ current_user.last_name }} Account Page</h1>
+    <p>Update your details here!</p>
     <div class='form'>
         <form method='POST' action=''>
             {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.first_name.label }}
+                {{ form.first_name }}
+                {% if form.first_name.errors %}
+                <div class="error">
+                    {% for error in form.first_name.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            <br>
+            <div class="form-group">
+                {{ form.last_name.label }}
+                {{ form.last_name }}
+                {% if form.last_name.errors %}
+                <div class="error">
+                    {% for error in form.last_name.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
             <div class='form_group'>
                 {{ form.email.label }}
                 {{ form.email }}
@@ -16,39 +40,14 @@
                 {% endif %}
             </div>
             <br>
-         
-            <br>
-            
-      {{ form.hidden_tag() }}
-        {{ form.first_name.label }}
-        {{ form.first_name }}
-        {% if form.first_name.errors %}
-            <div class="error">
-                {% for error in form.first_name.errors %}
-                    <span>{{ error }}</span>
-                {% endfor %}
+            <div>
+                {{ form.submit }}
             </div>
-        {% endif %}
-
-        {{ form.last_name.label }}
-        {{ form.last_name }}
-        {% if form.last_name.errors %}
-            <div class="error">
-                {% for error in form.last_name.errors %}
-                    <span>{{ error }}</span>
-                {% endfor %}
-            </div>
-        {% endif %}
-        
-            </div>
-                <div class='form_group'>
-                    {{ form.submit }}
-                </div>
-            </form>
-        </div> 
+        </form>
         <form action="{{ url_for('account_delete') }}">
             <button type="submit">Delete your account</button>
-    </form>
+        </form>
+    </div>
 
-    
 {% endblock %}
+        
