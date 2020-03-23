@@ -5,11 +5,12 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 
 
-app=SOFIA-Project1(__name__)
-bcrypt = Bcrypt(app)
+app=Flask(__name__)
+
 
 app.config['SQLALCHEMY_DATABASE_URI']=getenv('DATABASE_URI')
 db=SQLAlchemy(app)
+bcrypt = Bcrypt(app)
 
 app.config['SECRET_KEY']=getenv('SECRET_KEY')
 
