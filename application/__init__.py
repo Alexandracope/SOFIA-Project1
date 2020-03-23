@@ -5,7 +5,7 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 
 
-FLASK_APP=app:SOFIA-Project1
+app = Flask(__name__)
 
 
 app.config['SQLALCHEMY_DATABASE_URI']=getenv('DATABASE_URI')
