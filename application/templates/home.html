@@ -1,4 +1,12 @@
 {% extends "layout.html" %}
 {% block body_content %}
-    <p1> Dr Martens </p1>
-{% endblock %}
+    <h1>Home Page</h1>
+    <p>Dr Martens</p>
+{% for shoes in Docs %}
+        <div>
+            <span> <i>shoe name is :{{ shoe.name }} style code is :{{ shoe.style_code }}</i></span> 
+        </div>
+{% endfor %}        
+
+
+{% endblock body_content %}

@@ -6,21 +6,16 @@ from flask_login import current_user
 
 class CollectionsForm(FlaskForm):
 
-    title = StringField('Title',
+    id = StringField('item',
             validators = [
                 DataRequired(),
                 Length(min=4, max=100)
             ]
     )
 
-    content = StringField('Content',
-            validators = [
-                DataRequired(),
-                Length(min=4, max=100)
-            ]
-    )
+    
 
-    submit = SubmitField('Post Content')
+    submit = SubmitField('add collection')
 
 class RegistrationForm(FlaskForm):
     first_name = StringField('First Name',
