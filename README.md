@@ -1,11 +1,3 @@
-
-
-# Solution
-I decided to create a Dr Marten application allowing users to create there own online collection storing the pairs they own, while also being able to look at and find the names of new pairs they may want to buy. As well as being able to create their own collection they will be able to update it and delete it if needed. 
-
-# ERD
-
-
 # Dr Martens App
 
 ## Index
